@@ -13,9 +13,12 @@ const [categories, setCategories] = useState(CATEGORIES);
 const [btnClass, setBtnClass] = useState('All');
 
 
-
   function deletesItem(deletedItem){
     changeTasks(displayTasks.filter((item)=>item.text !== deletedItem))
+  }
+
+  function addItemtoList(newItem){
+    changeTasks([...displayTasks,newItem])
   }
 
 
@@ -43,7 +46,7 @@ const [btnClass, setBtnClass] = useState('All');
       setBtnClass={setBtnClass}
       />
 
-      <NewTaskForm />
+      <NewTaskForm  categories={categories} onTaskFormSubmit={addItemtoList}/>
       <TaskList tasks={filteredTasks} deletesItem={deletesItem} />
     </div>
   );
@@ -51,10 +54,3 @@ const [btnClass, setBtnClass] = useState('All');
 
 export default App;
 
-
-
-//
-
-///
-///
-//
